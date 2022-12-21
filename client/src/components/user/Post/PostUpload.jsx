@@ -5,12 +5,15 @@ import axios from '../../../Axios/axios'
 import jwtdecode from "jwt-decode"
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
+import { useSelector } from 'react-redux'
 
 
 function PostUpload() {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   const inputRef = useRef()
   const triggerFileSelectPopup = () => inputRef.current.click()
+  const user = useSelector((state) => state.User)
 
   const { ShowPostModal, setShowPostModal } = useContext(AppContext)
   const [Image, setImage] = useState('')
@@ -82,7 +85,7 @@ function PostUpload() {
                 {/*header*/}
                 <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t">
                   <div className='flex bg-transparent rounded-full w-full'>
-                    <img src={myPic} alt="" className='h-16 w-16 rounded-full object-cover border-[3px]' />
+                    <img src={PF + user.image} alt="" className='h-16 w-16 rounded-full object-cover border-[3px]' />
                     {/* <input type="text" /> */}
                     <textarea name="Caption" id="" className='w-full p-3' onChange={handleChange} placeholder="Enter ur Caption" ></textarea>
                   </div>

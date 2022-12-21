@@ -18,6 +18,7 @@ function Noticications() {
     // const fetchNotiCount = async () => {
     //     const { data } = fetchCount(user._id)
     // }
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
 
     useEffect(() => {
@@ -65,7 +66,7 @@ function Noticications() {
                             <>
                                 <div class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
 
-                                    <img src={data?.user?.image ? `/images/${data.user.image}` : "https://flowbite.com/docs/images/people/profile-picture-1.jpg"} class="flex-shrink-0 object-cover mx-1 rounded-full w-10 h-10" alt="" />
+                                    <img src={data?.user?.image ? PF + data.user.image : "https://flowbite.com/docs/images/people/profile-picture-1.jpg"} class="flex-shrink-0 object-cover mx-1 rounded-full w-10 h-10" alt="" />
 
                                     <div class="mx-1 flex-col ">
                                         <div className='flex'>
