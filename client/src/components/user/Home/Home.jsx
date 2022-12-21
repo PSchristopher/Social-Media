@@ -37,7 +37,7 @@ function Home() {
   };
   return (
     <>
-      <div className='bg-[#005691]  max-h-screen min-h-screen  '>
+      <div className='bg-[#0F213E]  max-h-screen min-h-screen  '>
         <Navbar />
         <div className='flex justify-center'>
 
