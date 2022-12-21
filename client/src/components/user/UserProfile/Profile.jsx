@@ -226,7 +226,7 @@ const [singlePostData, setsinglePostData] = useState()
                         </button>
                       </div>
                       <div className="flex relative p-3 flex-col m-3 w-[250px] gap-3 items-center bg-gray-500 rounded-lg   ">
-
+{/* jndjvdj */}
                         {
                           followings.data.map((details, index) => {
                             return (
