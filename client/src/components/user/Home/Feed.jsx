@@ -205,7 +205,7 @@ function Feed() {
                         return (
 
 
-                            <div className='bg-[#152442] p-2 rounded-lg  shadow-light w-full mb-4 max-w-[40rem] ' >
+                            <div className='bg-[#1f354d] p-2 rounded-lg  shadow-light w-full mb-4 max-w-[40rem] ' >
                                 <div className="flex justify-between">
                                     <div className='flex my-3 pb-3 ' >
                                         <div>

@@ -38,6 +38,7 @@ function Home() {
   return (
     <>
       <div className='bg-[#0F213E]  max-h-screen min-h-screen  '>
+        {/* {ddfd} */}
         <Navbar />
         <div className='flex justify-center'>
 
