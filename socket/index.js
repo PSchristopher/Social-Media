@@ -2,7 +2,7 @@ const io = require('socket.io')(8800, {
     
     path: "/socket/socket.io",
     cors: {
-        origin: "http://happynest.tk"
+        origin: "https://happynest.tk"
     }
 })
 // checking socket
