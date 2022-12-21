@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import './Home.css'
 import { deletepost, editUserPost, reportPost, updatePost } from '../../../api/UserRequest'
 import { useSelector } from 'react-redux'
-import { SocketContext } from '../../../Context/SocketContext'
+import { socket, SocketContext } from '../../../Context/SocketContext'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from 'react-toastify';
@@ -31,7 +31,7 @@ function Feed() {
 
     let userDetails = localStorage.getItem("Usertoken") ? jwtdecode(localStorage.getItem("Usertoken")) : ''
 
-    const socket = useContext(SocketContext)
+    // const socket = useContext(SocketContext)
 
     const [feed, setFeed] = useState([])
     const [CommentSection, setCommentSection] = useState({ status: false, postId: '' })
@@ -205,7 +205,7 @@ function Feed() {
                         return (
 
 
-                            <div className='bg-[#1f354d] p-2 rounded-lg  shadow-light w-full mb-4 max-w-[40rem] ' >
+                            <div className='bg-[#094166] p-2 rounded-lg  shadow-light w-full mb-4 max-w-[40rem] ' >
                                 <div className="flex justify-between">
                                     <div className='flex my-3 pb-3 ' >
                                         <div>
@@ -258,7 +258,7 @@ function Feed() {
 
                                 </div>
                                 <div className='object-contain '>
-                                    <img src={PF + post.image} alt="" className='rounded-lg object-cover w-full  h-[500px] border-4 border-spacing-3 border-[#50809b]' />
+                                    <img src={PF + post.image} alt="" className='rounded-lg object-cover w-full  h-[500px] border-4 border-spacing-3 border-[#d5e6fa]' />
                                 </div>
                                 <div className='p-2 max-w-[40rem]'>
                                     <p className='text-[#A0ADB4]  text-base	truncate'>{post.description}</p>
@@ -266,10 +266,10 @@ function Feed() {
                                 <div className='flex gap-3 p-3'>
                                     <div className='flex'>
 
-                                        <button className='bg-[#274055] rounded-lg text-white p-1 flex gap-1 items-center' onClick={() => likes(post._id, post.userId._id)}> <p className=''>{post.Likes.length}</p> <BsFillHeartFill className={` ${post.Likes.includes(userDetails.id) ? " text-red-600" : "text-white"}  `} /></button>
+                                        <button className='bg-[#666a7b] rounded-lg text-white p-1 flex gap-1 items-center' onClick={() => likes(post._id, post.userId._id)}> <p className=''>{post.Likes.length}</p> <BsFillHeartFill className={` ${post.Likes.includes(userDetails.id) ? " text-red-600" : "text-white"}  `} /></button>
                                     </div>
-                                    <button className='bg-[#274055] rounded-lg text-white p-1 ' onClick={() => showComment(post._id)}><FaRegCommentDots className={` flex  text-white  items-center `} /></button>
-                                    <button className='bg-[#274055] rounded-lg text-white p-1 '><BsFillShareFill className='flex text-white  items-center' /></button>
+                                    <button className='bg-[#666a7b] rounded-lg text-white p-2 ' onClick={() => showComment(post._id)}><FaRegCommentDots className={` flex  text-white  items-center `} /></button>
+                                    <button className='bg-[#666a7b] rounded-lg text-white p-2 '><BsFillShareFill className='flex text-white  items-center' /></button>
                                 </div>
                                 {
                                     CommentSection.status && CommentSection.postId == post._id ?

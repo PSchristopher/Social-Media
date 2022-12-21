@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { allOnlineUsers } from '../../../api/UserRequest';
 import myPic from '../../../assets/myPic.jpg'
 import { io } from 'socket.io-client'
-import { SocketContext } from '../../../Context/SocketContext';
+// import { SocketContext } from '../../../Context/SocketContext';
 import { socket } from '../../../Context/SocketContext'
 
 function LsideBar() {
@@ -47,7 +47,7 @@ function LsideBar() {
 
 
     return (
-        <div className='container bg-[#1f354d] p-5 rounded-lg shadow-light w-full' >
+        <div className='container bg-[#094166] p-5 rounded-lg shadow-light w-full' >
             <h1 className='font-semibold text-white'>Active Friends</h1>
             {
                 onlineUsers.map((user, index) => {

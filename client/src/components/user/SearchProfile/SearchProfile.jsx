@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate ,Link} from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import Navbar from '../Home/Navbar'
 import axios from '../../../Axios/axios'
 import { useSelector } from 'react-redux'
@@ -10,6 +10,8 @@ import jwtdecode from "jwt-decode"
 function SearchProfile(props) {
 
     const navigate = useNavigate()
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
     let userDetails = localStorage.getItem("Usertoken") ? jwtdecode(localStorage.getItem("Usertoken")) : ''
 
     const [UserPosts, setUserPosts] = useState([])
@@ -122,7 +124,7 @@ function SearchProfile(props) {
                             <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
                                 <div class="grid-cols-1 lg:col-span-3">
                                     <div class="mx-auto flex h-full items-center justify-center rounded-fullp-1">
-                                        <img src={Userdetails.image ? `/images/${Userdetails.image}` : `https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp`} alt="" className='rounded-full h-[140px] w-[140px] ' />
+                                        <img src={Userdetails.image ? PF + Userdetails.image : `https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp`} alt="" className='rounded-full h-[140px] w-[140px] ' />
 
 
                                     </div>
@@ -201,24 +203,49 @@ function SearchProfile(props) {
                                                         </span>
                                                     </button>
                                                 </div>
-                                                <div className="flex relative p-3 flex-col  w-[250px] gap-3 items-center bg-gray-500 rounded-lg   ">
+                                                {/* <div className="flex relative p-3 flex-col  w-[250px] gap-3 items-center bg-gray-500 rounded-lg   ">
 
                                                     {
                                                         followings.data.map((details, index) => {
                                                             return (
-                                                                
-                                                                
-                                                                <Link key={index} to={`${details._id != userDetails.id ? "/searchProfile" :"/userProfile"}` }  state={{user:details}} className="flex w-full items-center gap-5" onClick={()=>setffModal(false)}>
+
+
+                                                                <Link key={index} to={`${details._id != userDetails.id ? "/searchProfile" : "/userProfile"}`} state={{ user: details }} className="flex w-full items-center gap-5" onClick={() => setffModal(false)}>
                                                                     {
                                                                         details?.image ?
-                                                                            <img src={`/images/${details.image}`} className='h-12  w-12  rounded-full' alt="" />
+                                                                            <img src={PF + details.image} className='h-12  w-12  rounded-full' alt="" />
                                                                             :
                                                                             <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full w-12 h-12 " />
-                                                                           
+
                                                                     }
                                                                     <p className="text-white">{details?.UserName}</p>
                                                                 </Link>
-                                                              
+
+                                                            )
+                                                        }
+
+                                                        )
+
+                                                    }
+
+
+                                                </div> */}
+                                                <div className="flex relative p-3 flex-col m-3  w-[250px] gap-3 items-center bg-gray-500 rounded-lg   ">
+
+                                                    {
+                                                        followings.data.map((details, index) => {
+                                                            return (
+
+                                                                <div className="flex w-full items-center gap-5">
+                                                                    {
+                                                                        details?.image ?
+                                                                            <img src={`/images/${details.image}`} className='h-12  w-12 m-0 rounded-full' alt="" />
+                                                                            :
+                                                                            <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full m-0 w-12 h-12 " />
+
+                                                                    }
+                                                                    <p className="text-white">{details?.UserName}</p>
+                                                                </div>
                                                             )
                                                         }
 
@@ -253,7 +280,7 @@ function SearchProfile(props) {
                                                             <div class="group   rounded-xl">
                                                                 <div class="  w-full h-full p-3">
 
-                                                                    <img src={`/images/${posts.image}`} class="w-full h-60 rounded-lg object-cover " alt="vannilalo" />
+                                                                    <img src={PF + posts.image} class="w-full h-60 rounded-lg object-cover " alt="vannilalo" />
 
                                                                 </div>
                                                             </div>
@@ -268,9 +295,9 @@ function SearchProfile(props) {
 
                                             </div>
                                             : <div className="p-2 flex justify-center">
-                                                <iframe src="https://giphy.com/embed/giXLnhxp60zEEIkq8K" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/shopping-skeleton-cart-giXLnhxp60zEEIkq8K"></a></p>               
-                                                
-                                                 </div>
+                                                <iframe src="https://giphy.com/embed/giXLnhxp60zEEIkq8K" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/shopping-skeleton-cart-giXLnhxp60zEEIkq8K"></a></p>
+
+                                            </div>
 
                                     }
 

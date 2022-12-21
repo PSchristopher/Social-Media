@@ -147,7 +147,7 @@ function Navbar() {
     return (
         <>
 
-            <Disclosure as="nav" className="bg-[#152442]">
+            <Disclosure as="nav" className="bg-[#094166]">
             {/* hidden  md:block */}
                 {({ open }) => (
                     <>
