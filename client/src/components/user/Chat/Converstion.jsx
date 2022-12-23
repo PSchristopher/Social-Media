@@ -4,6 +4,7 @@ import { getUser } from '../../../api/UserRequest'
 function Converstion({ data, currentUserId , online}) {
 
   const [userData, setUserData] = useState(null)
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
     const userId = data.members.find((id) => id !== currentUserId)
@@ -28,7 +29,7 @@ function Converstion({ data, currentUserId , online}) {
       <li className="my-2 p-2 flex gap-4  flex-row cursor-pointer rounded-lg bg-[#596C7A] hover:bg-gray-200 hover:bg-opacity-50 hover:text-white">
         <div className='rounded-full  relative '>
           <img
-            src={userData?.image ? `/images/${userData.image}` : "https://randomuser.me/api/portraits/lego/4.jpg"}
+            src={userData?.image ? PF + userData.image : "https://randomuser.me/api/portraits/lego/4.jpg"}
             className="h-12 w-12 rounded-full mr-4" alt="" />
             {online && <div className='rounded-full absolute bottom-1 right-3 p-1 bg-green-500'></div>}
         </div>

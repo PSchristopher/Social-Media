@@ -21,6 +21,8 @@ function Chat() {
 
   console.log("onlineUsers");
   console.log(onlineUsers);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
   // sending message to socket server
   useEffect(() => {
     if (sendMessage !== null) {

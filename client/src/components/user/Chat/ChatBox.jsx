@@ -10,6 +10,7 @@ function ChatBox({ chat, currentUser, setSendMessage, receiveMessage }) {
     const [messages, setMessages] = useState([])
     const [newMessage, setnewMessage] = useState("")
     const scroll = useRef()
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
     useEffect(() => {
         if (receiveMessage !== null && receiveMessage.chatId === chat._id) {
@@ -98,7 +99,7 @@ function ChatBox({ chat, currentUser, setSendMessage, receiveMessage }) {
                             <div className=" py-2 flex  items-center gap-4">
                                 {
                                     userData?.image ?
-                                        <img src={`/images/${userData?.image}`}
+                                        <img src={PF + userData?.image}
                                             className="h-12 w-12 rounded-full self-end" alt="" />
                                         :
                                         <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} className="h-12 w-12 rounded-full self-end" alt="" />
