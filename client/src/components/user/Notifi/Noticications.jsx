@@ -48,7 +48,7 @@ function Noticications() {
 
             console.log(error);
         }
-    }, [socket, not ])
+    }, [socket, not])
 
 
     console.log(notData, "idhaanu data");

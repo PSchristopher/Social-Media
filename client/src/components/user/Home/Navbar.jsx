@@ -67,13 +67,13 @@ function Navbar() {
         setShowPostModal(!ShowPostModal)
     }
 
-  
+
 
     const notifi = async () => {
         console.log("jvhvgh");
         const { data } = await readStatus(user._id)
         console.log(data, "readdddddddddddddddddd");
-        
+
         setNotiCount()
         setShowNotification(!Shownotification)
 
@@ -133,6 +133,7 @@ function Navbar() {
                 // setnot(new Date())
                 fetchNotiCount()
             })
+            fetchNotiCount()
         } catch (error) {
             console.log(error);
         }
@@ -148,7 +149,7 @@ function Navbar() {
         <>
 
             <Disclosure as="nav" className="bg-[#152442]">
-            {/* hidden  md:block */}
+                {/* hidden  md:block */}
                 {({ open }) => (
                     <>
 
