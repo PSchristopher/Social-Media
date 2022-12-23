@@ -39,3 +39,5 @@ export const fetchCount = (data) => axios.get(`/getNotiCount/${data}`)
 export const readStatus = (data) => axios.put(`/readStatus`,{data})
 
 export const updatePost =(data)=>axios.put('/updatePost',data)
+
+export const suggestion = (data) => axios.get(`/suggestions/${data}`)

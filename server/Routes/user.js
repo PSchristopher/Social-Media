@@ -42,5 +42,8 @@ router.put('/readStatus',UserControl.readStatus)
 
 router.put('/updatePost',UserControl.updatePost)
 
+router.get('/suggestions/:id',UserControl.suggestions)
+
+
 
 module.exports = router;

@@ -272,9 +272,9 @@ module.exports = {
 
         try {
             let user = await User.findById(req.params.id)
-            const myPost = await newPost.find({ userId: req.params.id ,reportdedStatus:false}).populate('userId').sort({ Created: -1 })
+            const myPost = await newPost.find({ userId: req.params.id, reportdedStatus: false }).populate('userId').sort({ Created: -1 })
             const followingPosts = await Promise.all(user.following.map((id) => {
-                return newPost.find({ userId: id ,reportdedStatus:false}).populate('userId').sort({ Created: -1 })
+                return newPost.find({ userId: id, reportdedStatus: false }).populate('userId').sort({ Created: -1 })
             }))
             res.status(200).json({ result: true, feed: myPost.concat(...followingPosts) })
 
@@ -290,7 +290,7 @@ module.exports = {
 
     getUserPost: async (req, res) => {
         try {
-            let UserPosts = await newPost.find({ userId: req.params.id , reportdedStatus:false}).sort({ Created: -1 })
+            let UserPosts = await newPost.find({ userId: req.params.id, reportdedStatus: false }).sort({ Created: -1 })
             // console.log("UserPosts");
 
             // console.log(UserPosts);
@@ -690,6 +690,21 @@ module.exports = {
             res.status(200).json(true)
         } catch (error) {
             res.status(500).json({ message: "something went wrong" })
+        }
+    },
+
+    suggestions: async (req, res) => {
+        try {
+            await User.find({ followers: { $nin: req.params.id }, _id: { $ne: req.params.id } }).limit(5)
+                .then((response) => {
+                    console.log(response, 'user suggest');
+                    res.status(200).json(response)
+                })
+                .catch((err) => {
+                    res.status(500).json("Something went wrong")
+                })
+        } catch (error) {
+            res.status(500).json({ message: "Something went wrong!" })
         }
     }
 
