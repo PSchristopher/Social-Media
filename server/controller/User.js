@@ -395,7 +395,7 @@ module.exports = {
             if (!post.Likes.includes(req.body.userId)) {
                 await post.updateOne({ $push: { Likes: req.body.userId } })
                 // console.log(post);
-                if (post.userId !== req.body.userId) {
+                if (post.userId != req.body.userId) {
 
                     await notiSchema.updateOne({ userId: post.userId }, {
                         $push: {

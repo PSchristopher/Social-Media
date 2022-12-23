@@ -71,6 +71,7 @@ function Feed() {
                 "x-access-token": localStorage.getItem("Usertoken"),
             },
         }).then((response) => {
+            getPost()
             if (response.data.liked) {
                 socket.emit('send-notification', {
                     senderId: userDetails.id,
@@ -79,7 +80,6 @@ function Feed() {
 
                 })
             }
-            getPost()
         })
     }
 
@@ -116,7 +116,7 @@ function Feed() {
 
     }
     const postComment = (id) => {
-        console.log(id,"njnjnbjhb");
+        console.log(id, "njnjnbjhb");
         axios.post(`/postComment/${id}`, Comment, {
             headers: {
                 "x-access-token": localStorage.getItem("Usertoken"),
@@ -189,7 +189,7 @@ function Feed() {
         }
         const { data } = await updatePost(updation)
         console.log(data, "hhhhh");
-     
+
         if (data) {
             seteditModal({ status: false })
             getPost()
@@ -212,7 +212,7 @@ function Feed() {
                                             <div className='rounded-full  relative w-[50px] h-[50px]'>
                                                 {
                                                     post.userId.image ?
-                                                        <img src={PF + post.userId.image } className='rounded-full object-cover w-full h-full ' alt="" />
+                                                        <img src={PF + post.userId.image} className='rounded-full object-cover w-full h-full ' alt="" />
                                                         // <img src={`/images/${post.userId.image}`} className='rounded-full object-cover w-full h-full ' alt="" />
                                                         :
                                                         <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full object-cover w-full h-full " />
@@ -324,7 +324,7 @@ function Feed() {
                     })
                 }
 
-                
+
 
 
                 {
