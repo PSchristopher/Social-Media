@@ -212,8 +212,7 @@ function Feed() {
                                             <div className='rounded-full  relative w-[50px] h-[50px]'>
                                                 {
                                                     post.userId.image ?
-                                                        <img src={PF + post.userId.image} className='rounded-full object-cover w-full h-full ' alt="" />
-                                                        // <img src={`/images/${post.userId.image}`} className='rounded-full object-cover w-full h-full ' alt="" />
+                                                        <img src={`/images/${post.userId.image}`} className='rounded-full object-cover w-full h-full ' alt="" />
                                                         :
                                                         <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full object-cover w-full h-full " />
                                                 }
@@ -258,7 +257,7 @@ function Feed() {
 
                                 </div>
                                 <div className='object-contain '>
-                                    <img src={PF + post.image} alt="" className='rounded-lg object-cover w-full  h-[500px] border-4 border-spacing-3 border-[#d5e6fa]' />
+                                    <img src={`/images/${post.image}`} alt="" className='rounded-lg object-cover w-full  h-[500px] border-4 border-spacing-3 border-[#50809b]' />
                                 </div>
                                 <div className='p-2 max-w-[40rem]'>
                                     <p className='text-[#A0ADB4]  text-base	truncate'>{post.description}</p>
@@ -266,10 +265,10 @@ function Feed() {
                                 <div className='flex gap-3 p-3'>
                                     <div className='flex'>
 
-                                        <button className='bg-[#666a7b] rounded-lg text-white p-1 flex gap-1 items-center' onClick={() => likes(post._id, post.userId._id)}> <p className=''>{post.Likes.length}</p> <BsFillHeartFill className={` ${post.Likes.includes(userDetails.id) ? " text-red-600" : "text-white"}  `} /></button>
+                                        <button className='bg-[#274055] rounded-lg text-white p-1 flex gap-1 items-center' onClick={() => likes(post._id, post.userId._id)}> <p className=''>{post.Likes.length}</p> <BsFillHeartFill className={` ${post.Likes.includes(userDetails.id) ? " text-red-600" : "text-white"}  `} /></button>
                                     </div>
-                                    <button className='bg-[#666a7b] rounded-lg text-white p-2 ' onClick={() => showComment(post._id)}><FaRegCommentDots className={` flex  text-white  items-center `} /></button>
-                                    <button className='bg-[#666a7b] rounded-lg text-white p-2 '><BsFillShareFill className='flex text-white  items-center' /></button>
+                                    <button className='bg-[#274055] rounded-lg text-white p-1 ' onClick={() => showComment(post._id)}><FaRegCommentDots className={` flex  text-white  items-center `} /></button>
+                                    <button className='bg-[#274055] rounded-lg text-white p-1 '><BsFillShareFill className='flex text-white  items-center' /></button>
                                 </div>
                                 {
                                     CommentSection.status && CommentSection.postId == post._id ?
@@ -280,7 +279,7 @@ function Feed() {
                                                         return (
                                                             <div className='flex mb-3 '>
                                                                 <div className='flex rounded-full  min-w-[30px] min-h-[30px] max-w-[30px] max-h-[30px]'>
-                                                                    <img src={comment.userId.image ? PF + comment.userId.image : `https://randomuser.me/api/portraits/lego/0.jpg`} className='rounded-full object-cover w-full h-full ' alt="" />
+                                                                    <img src={comment.userId.image ? `/images/${comment.userId.image}` : `https://randomuser.me/api/portraits/lego/0.jpg`} className='rounded-full object-cover w-full h-full ' alt="" />
                                                                 </div>
                                                                 <div className='ml-5  gap-3 items-center'>
                                                                     <h2 className='text-[14px] font-semibold text-white'>{comment.userId.UserName}  	&nbsp; <span className='text-[10px] text-gray-400'>{format(comment.created)}</span></h2>
@@ -298,7 +297,7 @@ function Feed() {
 
                                             <div className='flex w-full '>
                                                 <div className=' rounded-full  w-[50px] h-[50px] z-20'>
-                                                    <img src={user.image ? PF + user.image : `https://randomuser.me/api/portraits/lego/0.jpg`} className='rounded-full object-cover w-full h-full ' alt="" />
+                                                    <img src={user.image ? `/images/${user.image}` : `https://randomuser.me/api/portraits/lego/0.jpg`} className='rounded-full object-cover w-full h-full ' alt="" />
                                                     {/* <div className='rounded-full absolute bottom-0 right-0 p-1 bg-green-400'></div> */}
 
                                                 </div>
@@ -451,22 +450,21 @@ function Feed() {
                                                                     <div className='p-2 bg-[#1f354d] rounded-t-lg   border-slate-200 border-t shadow-md'>
                                                                         <div className='flex items-center space-x-2'>
 
-                                                                            <img src={user?.image ? PF + user.image : "https://imgs.search.brave.com/JC3yuRG8o8d2G-kk-gDv7DrSKVLLPa5QoIK2uoMr9QE/rs:fit:641:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/enVZTVhkQjNEUFVu/UE9ld2hha0N3SGFG/ZSZwaWQ9QXBp"} className='rounded-full w-10 h-10' alt="" />
+                                                                            <img src={user?.image ? `/images/${user.image}` : "https://imgs.search.brave.com/JC3yuRG8o8d2G-kk-gDv7DrSKVLLPa5QoIK2uoMr9QE/rs:fit:641:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/enVZTVhkQjNEUFVu/UE9ld2hha0N3SGFG/ZSZwaWQ9QXBp"} className='rounded-full w-10 h-10' alt="" />
                                                                             <div>
                                                                                 <p className='font-medium text-white'>{user.UserName}</p>
-                                                                                <div className='pt-3'>
-                                                                                    <input className='text-sm w-96 h-8 bg-gray-500 rounded-sm p-2 text-gray-100' value={Postedit} onChange={handleChangee} />
-                                                                                </div>
-                                                                                <div className='flex justify-center items-center pt-1'>
+
+                                                                                <div className='flex justify-center items-center pt-1 gap-2'>
+                                                                                    {/* <input className='text-sm w-80 h-10 bg-gray-500 rounded-sm p-2 text-gray-100' value={Postedit} onChange={handleChangee} /> */}
+                                                                                    <textarea name="Caption" id="" className='text-sm w-80 h-20 bg-gray-500 rounded-sm p-2 text-gray-100 scrollbar-hide' value={Postedit} placeholder="Enter ur Caption" ></textarea>
                                                                                     <button type="button" class="items-center text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm p-2 text-center mr-2 mb-2" onClick={() => Update(editModal.postId)}>Update</button>
                                                                                 </div>
-                                                                                {/* <textarea name="Caption" id="" className=' p-3' placeholder="Enter ur Caption" ></textarea> */}
 
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div className='relative w-full pb-3 rounded-b-lg  bg-[#1f354d] '>
-                                                                        <img className='object-contain w-[500px] h-[300px] rounded-lg' alt="" src={PF + editModal.image} />
+                                                                        <img className='object-contain w-[500px] h-[300px] rounded-lg' alt="" src={`/images/${editModal.image}`} />
                                                                     </div>
 
                                                                     {/* <div className='flex justify-between rounded-b-2xl items-center  bg-white  text-gray-400 border-t '>
@@ -528,7 +526,7 @@ function Feed() {
                                                             </div>
 
                                                         </div>
-                                                        <button className="cursor-pointer absolute top-0 right-0 mt-8   mr-5 text-black hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onClick={() => seteditModal({ status: false })}>
+                                                        <button className="cursor-pointer absolute top-0 right-0 mt-8   mr-5 text-white hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onClick={() => seteditModal({ status: false })}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                                 <path stroke="none" d="M0 0h24v24H0z" />
                                                                 <line x1="18" y1="6" x2="6" y2="18" />
