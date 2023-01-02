@@ -11,6 +11,7 @@ import { IoEye } from 'react-icons/io5'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { editUserPost, showFollower, showFollowing } from "../../../api/UserRequest";
+import { Link } from "react-router-dom";
 function Profile() {
   const inputRef = useRef()
 
@@ -33,7 +34,7 @@ function Profile() {
   const [postView, setpostView] = useState(false)
   const [followings, setFollowings] = useState({})
   const [ffModal, setffModal] = useState(false)
-const [singlePostData, setsinglePostData] = useState()
+  const [singlePostData, setsinglePostData] = useState()
 
 
   useEffect(() => {
@@ -69,7 +70,7 @@ const [singlePostData, setsinglePostData] = useState()
     }).then((response) => {
 
       if (response.data.result) {
-        console.log(response.data.feed,"hfhhfhfhfhfhhf");   
+        console.log(response.data.feed, "hfhhfhfhfhfhhf");
         setUserPosts(response.data.feed)
       }
     })
@@ -124,7 +125,7 @@ const [singlePostData, setsinglePostData] = useState()
     const { data } = await editUserPost(postId)
     setsinglePostData(data)
     setpostView(!postView)
-    
+
   }
   const showFollowings = async () => {
     const { data } = await showFollowing(UserDetails._id)
@@ -225,22 +226,24 @@ const [singlePostData, setsinglePostData] = useState()
                           </span>
                         </button>
                       </div>
-                      <div className="flex relative p-3 flex-col m-3 w-[250px] gap-3 items-center bg-gray-500 rounded-lg   ">
+                      <div className="flex relative p-3 flex-col m-3 w-[250px] max-h-[300px] overflow-y-scroll scrollbar-hide gap-3 items-center bg-gray-500 rounded-lg   ">
 
                         {
                           followings.data.map((details, index) => {
                             return (
 
-                              <div className="flex w-full items-center gap-5">
+                              <Link className="flex w-full items-center gap-5" key={index}
+                                to={`${details._id != userDetails.id ? "/searchProfile" : "/userProfile"}`} state={{ user: details }} >
+
                                 {
-                                  details?.image  ?
-                                    <img src={`/images/${details.image}`} className='h-12 m-0 w-12  rounded-full' alt="" />
+                                  details?.image ?
+                                    <img src={PF + details.image} className='h-12 m-0 w-12  rounded-full' alt="" />
                                     :
                                     <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full m-0 w-12 h-12 " />
 
                                 }
                                 <p className="text-white">{details?.UserName}</p>
-                              </div>
+                              </Link>
                             )
                           }
 
@@ -421,7 +424,7 @@ const [singlePostData, setsinglePostData] = useState()
                                 <div className='flex flex-col   w-full'>
                                   <div className='p-5 bg-white   rounded-t-2xl border-slate-200 border-t shadow-md'>
                                     <div className='flex items-center space-x-2'>
-                                      <img src={"https://imgs.search.brave.com/JC3yuRG8o8d2G-kk-gDv7DrSKVLLPa5QoIK2uoMr9QE/rs:fit:641:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/enVZTVhkQjNEUFVu/UE9ld2hha0N3SGFG/ZSZwaWQ9QXBp"} className='rounded-full w-10 h-10'alt="" />
+                                      <img src={"https://imgs.search.brave.com/JC3yuRG8o8d2G-kk-gDv7DrSKVLLPa5QoIK2uoMr9QE/rs:fit:641:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/enVZTVhkQjNEUFVu/UE9ld2hha0N3SGFG/ZSZwaWQ9QXBp"} className='rounded-full w-10 h-10' alt="" />
                                       <div>
                                         <p className='font-medium'>bnb</p>
                                         <p className='text-xs text-gray-400'></p>
@@ -430,25 +433,25 @@ const [singlePostData, setsinglePostData] = useState()
                                     <p className='pt-4'></p>
                                   </div>
                                   <div className='relative w-full   bg-white '>
-                                    <img className='object-cover w-[700px] h-[400px]' src={singlePostData?.image? PF + singlePostData?.image:""} alt="" />
+                                    <img className='object-cover w-[700px] h-[400px]' src={singlePostData?.image ? PF + singlePostData?.image : ""} alt="" />
                                   </div>
 
                                   <div className='flex justify-between rounded-b-2xl items-center  bg-white  text-gray-400 border-t '>
                                     <div className='w-20  flex justify-between items-center space-x-4 p-2'>
                                       <div className='text-2xl flex text-slate-900 hover:cursor-pointer '   >
 
-                                        
-                                          <span className='text-lg ml-2'></span>
-                                        
+
+                                        <span className='text-lg ml-2'></span>
+
                                       </div>
                                       <div className='text-xl flex text-slate-900 cursor-pointer ' >
                                         <div className='py-1'>
-                                         jnj
+                                          jnj
                                         </div>
-                                       
 
-                                            <span className='ml-2 text-lg'>nz</span>
-                                        
+
+                                        <span className='ml-2 text-lg'>nz</span>
+
                                       </div>
                                       <div className='text-xl'> zzz</div>
 
@@ -462,28 +465,28 @@ const [singlePostData, setsinglePostData] = useState()
                                     <div className=' max-h-32 overflow-auto scrollbar-hide rounded-b-2xl border-slate-200  shadow-md' >
 
 
-                                   
-                                       
-                                          <div className="flex gap-3 py-2 pl-3 items-center bg-white">
-                                            <div>
-                                              <img src="https://imgs.search.brave.com/JC3yuRG8o8d2G-kk-gDv7DrSKVLLPa5QoIK2uoMr9QE/rs:fit:641:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/enVZTVhkQjNEUFVu/UE9ld2hha0N3SGFG/ZSZwaWQ9QXBp" className='rounded-full' width={30} height={30} alt="" />
-                                            </div>k
-                                            <div>
-                                              <div>
-                                                <span className="font-medium text-sm mr-2">zzz</span>
-                                                <span className="">zzz</span>
-                                              </div>
-                                              <p className="text-slate-500 text-xs ">  bba</p>
-                                            </div>
+
+
+                                      <div className="flex gap-3 py-2 pl-3 items-center bg-white">
+                                        <div>
+                                          <img src="https://imgs.search.brave.com/JC3yuRG8o8d2G-kk-gDv7DrSKVLLPa5QoIK2uoMr9QE/rs:fit:641:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/enVZTVhkQjNEUFVu/UE9ld2hha0N3SGFG/ZSZwaWQ9QXBp" className='rounded-full' width={30} height={30} alt="" />
+                                        </div>k
+                                        <div>
+                                          <div>
+                                            <span className="font-medium text-sm mr-2">zzz</span>
+                                            <span className="">zzz</span>
                                           </div>
-                   
+                                          <p className="text-slate-500 text-xs ">  bba</p>
+                                        </div>
+                                      </div>
+
 
 
 
 
                                     </div>
 
-                                   
+
                                   </div>
 
 
@@ -491,7 +494,7 @@ const [singlePostData, setsinglePostData] = useState()
                               </div>
 
                             </div>
-                            <button className="cursor-pointer absolute top-0 right-0 mt-8   mr-5 text-black hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onClick={()=>setpostView()}>
+                            <button className="cursor-pointer absolute top-0 right-0 mt-8   mr-5 text-black hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600" onClick={() => setpostView()}>
                               <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" />
                                 <line x1="18" y1="6" x2="6" y2="18" />

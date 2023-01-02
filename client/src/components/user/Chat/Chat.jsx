@@ -93,7 +93,7 @@ function Chat() {
 
                       </div>
                       <div className="">
-                        <ul className="min-w-full h-96  overflow-y-scroll overflow-hidden  scrollbar-hide messagelist">
+                        <ul className="min-w-full h-[500px] overflow-y-scroll overflow-hidden  scrollbar-hide messagelist">
                           {
                             chats.map((chat) => (
                               <div onClick={() => setCurrentChat(chat)}>

@@ -7,7 +7,7 @@ import { AiTwotoneDelete } from 'react-icons/ai'
 import axios from '../../../Axios/axios'
 import { format, render, cancel, register } from 'timeago.js';
 import jwtdecode from "jwt-decode"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Home.css'
 import { deletepost, editUserPost, reportPost, updatePost } from '../../../api/UserRequest'
 import { useSelector } from 'react-redux'
@@ -204,15 +204,32 @@ function Feed() {
                     feed.map((post, index) => {
                         return (
 
-
                             <div className='bg-[#1f354d] p-2 rounded-lg  shadow-light w-full mb-4 max-w-[40rem] ' >
+                                {/* <Link className='flex items-center cursor-pointer hover:bg-white rounded-lg p-3' key={index}
+                                to={`${item._id != userDetails.id ? "/searchProfile" : "/userProfile"}`} state={{ user: item }}
+                                onClick={() => { setSearchModal(false) }}>
+                                <div className='h-[40px] w-[40px] bg-gray-600 rounded-full mr-3'>
+
+                                    {
+                                        item.image &&
+                                        <img className="h-full w-full object-cover rounded-full" src={PF + item.image} alt="" />
+                                    }
+                                </div>
+                                <div className='flex flex-col'>
+                                    <p className='font-bold	'>
+                                        {item.UserName}
+                                    </p>
+
+                                </div>
+                            </Link> */}
                                 <div className="flex justify-between">
-                                    <div className='flex my-3 pb-3 ' >
+                                    <Link className='flex my-3 pb-3 ' key={index}
+                                        to={`${post.userId._id != userDetails.id ? "/searchProfile" : "/userProfile"}`} state={{ user: post.userId }} >
                                         <div>
                                             <div className='rounded-full  relative w-[50px] h-[50px]'>
                                                 {
                                                     post.userId.image ?
-                                                        <img src={`/images/${post.userId.image}`} className='rounded-full object-cover w-full h-full ' alt="" />
+                                                        <img src={PF + post.userId.image} className='rounded-full object-cover w-full h-full ' alt="" />
                                                         :
                                                         <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full object-cover w-full h-full " />
                                                 }
@@ -228,7 +245,7 @@ function Feed() {
 
                                         </div>
 
-                                    </div>
+                                    </Link>
                                     {/* <div className=' flex'> */}
                                     {/* <button className='justify-end text-white' ><BsThreeDotsVertical/></button> */}
 
@@ -257,7 +274,7 @@ function Feed() {
 
                                 </div>
                                 <div className='object-contain '>
-                                    <img src={`/images/${post.image}`} alt="" className='rounded-lg object-cover w-full  h-[500px] border-4 border-spacing-3 border-[#50809b]' />
+                                    <img src={PF+post.image} alt="" className='rounded-lg object-cover w-full  h-[500px] border-4 border-spacing-3 border-[#50809b]' />
                                 </div>
                                 <div className='p-2 max-w-[40rem]'>
                                     <p className='text-[#A0ADB4]  text-base	truncate'>{post.description}</p>

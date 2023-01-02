@@ -230,22 +230,24 @@ function SearchProfile(props) {
 
 
                                                 </div> */}
-                                                <div className="flex relative p-3 flex-col m-3  w-[250px] gap-3 items-center bg-gray-500 rounded-lg   ">
-
+                                                <div className="flex relative p-3 flex-col m-3  w-[250px]  max-h-[300px] overflow-y-scroll scrollbar-hide gap-3 items-center bg-gray-500 rounded-lg   ">
                                                     {
                                                         followings.data.map((details, index) => {
                                                             return (
 
-                                                                <div className="flex w-full items-center gap-5">
+                                                                <Link className="flex w-full items-center gap-5" key={index}
+                                                                    to={`${details._id != userDetails.id ? "/searchProfile" : "/userProfile"}`} state={{ user: details }} >
+
                                                                     {
                                                                         details?.image ?
-                                                                            <img src={`/images/${details.image}`} className='h-12  w-12 m-0 rounded-full' alt="" />
+                                                                            <img src={PF + details.image} className='h-12  w-12 m-0 rounded-full' alt="" />
                                                                             :
                                                                             <img src={'https://imgs.search.brave.com/d0IIb0RSYo0SCzA8yldT5UCB9IByR7XvhKjLrb6F-Zc/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC53/UnR2T05fOEpLUlFn/aGRST3c1UXZRSGFI/YSZwaWQ9QXBp'} alt="ProfileImage" className="rounded-full m-0 w-12 h-12 " />
 
                                                                     }
                                                                     <p className="text-white">{details?.UserName}</p>
-                                                                </div>
+                                                                    {/* <p>{details}</p> */}
+                                                                </Link>
                                                             )
                                                         }
 

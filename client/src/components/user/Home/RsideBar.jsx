@@ -48,8 +48,7 @@ function RsideBar() {
                             <div className='flex justify-between my-3 pt-3'>
                                 <div className=' '>
                                     <div className='rounded-full  relative w-[50px] h-[50px]'>
-                                        <img src={PF + data.image} className='rounded-full object-cover w-full h-full ' alt="" />
-                                        <div className='rounded-full absolute bottom-0 right-0 p-1 bg-green-400'></div>
+                                        <img src={PF + data.image } className='rounded-full object-cover w-full h-full ' alt={data.image} />
                                     </div>
                                 </div>
                                 <div className=' '>

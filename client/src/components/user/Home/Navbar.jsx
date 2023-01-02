@@ -303,10 +303,10 @@ function Navbar() {
                 )}
             </Disclosure>
             {searchModal ?
-                <div className='shadow-light bg-gray-300 p-4 w-[18%] rounded-lg absolute  z-30 left-52  h-max-[200px] top-[4.5rem]'>
+                <div className='shadow-light bg-gray-300 p-4 w-[18%] rounded-lg absolute  z-30 left-52 max-h-[400px] overflow-y-scroll scrollbar-hide top-[4.5rem]'>
 
 
-                    {Search.map((item, index) => {
+                    {Search.map((item, index) => { 
                         return (
                             <Link className='flex items-center cursor-pointer hover:bg-white rounded-lg p-3' key={index}
                                 to={`${item._id != userDetails.id ? "/searchProfile" : "/userProfile"}`} state={{ user: item }}
@@ -326,6 +326,7 @@ function Navbar() {
                                 </div>
                             </Link>
                         )
+                        
                     })
                     }
 
