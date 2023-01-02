@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const def = require('../public/images/default.webp')
 const userSchema = new mongoose.Schema({
     fullname: {
         type: String,
@@ -39,7 +38,7 @@ const userSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: def
+        default: ''
     },
     about: {
         type: String,
