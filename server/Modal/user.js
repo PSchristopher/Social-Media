@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const def = require('../public/images/default.webp')
 const userSchema = new mongoose.Schema({
     fullname: {
         type: String,
@@ -37,25 +37,25 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    image :{
-        type:String,
-        default:''
+    image: {
+        type: String,
+        default: def
     },
-    about:{
-       type:String,
-       default:'Tell about Your self' 
+    about: {
+        type: String,
+        default: 'Tell about Your self'
     },
-    mobile:{
-        type:Number,
-        default:91
+    mobile: {
+        type: Number,
+        default: 91
     },
-    followers:{
-        type:Array,
-        default:[]
+    followers: {
+        type: Array,
+        default: []
     },
-    following:{
-        type:Array,
-        default:[]
+    following: {
+        type: Array,
+        default: []
 
     }
 })
