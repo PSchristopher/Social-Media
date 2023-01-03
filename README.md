@@ -16,12 +16,17 @@ Live : <a href="https://happynest.tk" target="blank">HappyNest</a>
 
 
 #### User register with email otp
-![image](https://user-images.githubusercontent.com/95907424/209275091-d66eb25d-0f02-4632-8cef-96bb0ce94b56.png)
-![image](https://user-images.githubusercontent.com/95907424/209275388-b61b19d1-a850-43cb-9d27-8ac6ba708b5b.png)
-
+![image](https://user-images.githubusercontent.com/107933434/210220032-c6567312-c1d3-4126-ba20-922acdaf899e.png)
+![image](https://user-images.githubusercontent.com/107933434/210220363-2ecdd9e2-8738-4779-a483-ea5a87e16727.png)
 #### Login 
-![image](https://user-images.githubusercontent.com/95907424/209275062-6c30fdb5-814c-4b2d-9afa-5f93398ecc78.png)
+![image](https://user-images.githubusercontent.com/107933434/210219975-a27ca6a2-cb32-4d8e-aec5-fb15260d3c03.png)
 
+### Home
+![image](https://user-images.githubusercontent.com/107933434/210375500-a9cb178d-2585-471a-bf29-0de7bc7e2740.png)
+### Profile
+![image](https://user-images.githubusercontent.com/107933434/210375765-dee4cce0-de74-40fe-9d49-8ed5ca63cfec.png)
+### Chat
+![image](https://user-images.githubusercontent.com/107933434/210375867-0ffe5b4c-ed0e-44d1-b6f0-6b4e3875beec.png)
 
 ## Used 
 
